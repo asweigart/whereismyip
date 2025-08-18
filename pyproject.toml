@@ -1,0 +1,17 @@
+[project]
+name = "whereismyip"
+version = "0.1.0"
+description = "A simple Python library that queries multiple geolocation services until one succeeds."
+readme = "README.md"
+license = { text = "GPL-3.0" }
+requires-python = ">=3.6"
+
+
+# Leave author information blank as requested
+authors = [
+  { name = "Al Sweigart", email = "al@inventwithpython.com" }
+]
+
+[build-system]
+requires = ["setuptools>=65.0"]
+build-backend = "setuptools.build_meta"
