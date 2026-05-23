@@ -28,6 +28,25 @@ The IP address argument can be an IPv4 or IPv6 address. If this argument is not 
 {'ip': '8.8.8.8', 'city': 'Mountain View', 'region': 'California', 'country': 'United States', 'country_code': 'US', 'latitude': 37.3860517, 'longitude': -122.0838511}
 ```
 
+Successful lookups are cached in-process for 2 seconds, so tight loops or repeated calls don't hammer the providers. Pass `cache_ttl=0` to bypass, or call `whereismyip.clear_cache()` to drop the cache.
+
+## Command line
+
+After installing, the `whereismyip` command is available on your PATH. It can also be run as a module:
+
+```
+$ whereismyip
+Bellevue, Washington, United States
+
+$ whereismyip 8.8.8.8
+Mountain View, California, United States
+
+$ python -m whereismyip 8.8.8.8
+Mountain View, California, United States
+```
+
+Exit code is `0` on success, `1` on lookup failure, `2` on usage errors.
+
 ## Reference
 
     def whereismyip(
@@ -36,6 +55,7 @@ The IP address argument can be an IPv4 or IPv6 address. If this argument is not 
         attempts: int = 2,
         user_agent: str = _DEFAULT_USER_AGENT,
         providers=_GEO_FUNCS,
+        cache_ttl: float = 2.0,
     ) -> str:
 
     def whereismyip_dict(
@@ -44,7 +64,10 @@ The IP address argument can be an IPv4 or IPv6 address. If this argument is not 
         attempts: int = 2,
         user_agent: str = _DEFAULT_USER_AGENT,
         providers=_GEO_FUNCS,
+        cache_ttl: float = 2.0,
     ) -> dict:
+
+    def clear_cache() -> None:
 
 The four geolocation services are [ipwhois.io](https://ipwhois.io/), [ipapi.co](https://ipapi.co/), [IPinfo.io](https://ipinfo.io/), and [FindIP.net](https://findip.net/).
 

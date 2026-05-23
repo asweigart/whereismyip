@@ -12,6 +12,9 @@ authors = [
   { name = "Al Sweigart", email = "al@inventwithpython.com" }
 ]
 
+[project.scripts]
+whereismyip = "whereismyip.__main__:main"
+
 [build-system]
 requires = ["setuptools>=65.0"]
 build-backend = "setuptools.build_meta"
