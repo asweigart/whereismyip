@@ -1,6 +1,6 @@
 [project]
 name = "whereismyip"
-version = "0.1.0"
+version = "2026.5.23"
 description = "A simple Python library that queries multiple geolocation services until one succeeds."
 readme = "README.md"
 license = { text = "GPL-3.0" }
